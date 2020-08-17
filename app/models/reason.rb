@@ -1,0 +1,3 @@
+class Reason < ApplicationRecord
+    belongs_to :request
+end
