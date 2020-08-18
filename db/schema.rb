@@ -10,36 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_203801) do
+ActiveRecord::Schema.define(version: 2020_08_18_200338) do
 
-  create_table "employee_profiles", force: :cascade do |t|
-    t.integer "employee_id"
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.string "email"
     t.integer "years_working"
     t.integer "num_of_days_taken_off", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "employees", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.text "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "manager_profiles", force: :cascade do |t|
-    t.integer "manager_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.text "password_digest"
   end
 
   create_table "managers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "username"
     t.integer "passcode"
-    t.text "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "password_digest"
+    t.string "email"
   end
 
   create_table "reasons", force: :cascade do |t|
@@ -54,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_203801) do
     t.integer "reason_id"
     t.text "explanation"
     t.text "man_explanation"
-    t.boolean "approve_or_deny"
+    t.string "approve_or_deny", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

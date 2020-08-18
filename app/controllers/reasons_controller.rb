@@ -1,9 +1,13 @@
 class ReasonsController < ApplicationController
 
+    before_action :authorized
+    
     def new
+        @reason = Reason.new
     end 
 
     def create
+        @reason = Reason.new(reason_params)
     end
 
     private
@@ -11,9 +15,4 @@ class ReasonsController < ApplicationController
     def reason_params
         params.require(:reason).permit(:reason)
     end
-    
-    def find_reason
-        @reason = Reason.find_by(id: params[:id])
-    end
-
 end

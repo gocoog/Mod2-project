@@ -1,0 +1,27 @@
+<h1>Employee Setup</h1>
+
+<div><%= form_with model:@employee do |f| %>
+
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %><br>
+
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br>
+
+    <%= f.label :years_working %><br>
+    <%= f.text_field :years_working %><br>
+
+    <%= f.label :email %><br>
+    <%= f.text_field :email %><br>
+
+    <%= f.label :username %><br>
+    <%= f.text_field :username %><br>
+
+    <%= f.label :password %><br>
+    <%= f.text_field :password %><br>
+<br>
+    <%= f.submit %></div>
+
+<% end %>
+
+

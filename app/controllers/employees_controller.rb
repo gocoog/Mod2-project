@@ -1,24 +1,35 @@
 class EmployeesController < ApplicationController
-
-    def new
-    end
+    before_action :find_employee, only: [:show, :edit, :update]
+    before_action :authorized
     
-    def create
-    end
-
     def show
     end
 
-    # def edit   - Stretch goal to edit employee, add password validation for changing it
-    # end
+    def new   
+        @employee = Employee.new
+    end
+    
+    def create
+        @employee = Employee.create(employee_params)
 
-    # def update
-    # end
+        flash[:success] = "Employee was successfully created!"
+
+        redirect_to employee_path(@employee)
+    end
+
+    def edit
+    end 
+
+    def update
+        @employee.update(employee_params)
+        flash[:success] = 'Employee Profile has successfully been updated!'
+        redirect_to employee_path(@employee)
+    end
 
     private
 
     def employee_params
-        params.require(:employee).permit(:username, :email, :password)
+        params.require(:employee).permit(:first_name, :last_name, :username, :email, :password, :years_working)
     end
     
     def find_employee

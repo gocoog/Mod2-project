@@ -1,0 +1,25 @@
+<h1>Manager Setup</h1>
+
+<div><%= form_with model:@manager do |f| %>
+
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %><br>
+
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br>
+
+    <%= f.label :email %><br>
+    <%= f.text_field :email %><br>
+
+    <%= f.label :username %><br>
+    <%= f.text_field :username %><br>
+
+    <%= f.label :password %><br>
+    <%= f.text_field :password %><br>
+
+    <%= f.label :passcode %><br>
+    <%= f.text_field :passcode %><br>
+<br>
+    <%= f.submit %></div>
+
+<% end %>

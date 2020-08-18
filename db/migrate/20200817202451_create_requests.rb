@@ -6,7 +6,7 @@ class CreateRequests < ActiveRecord::Migration[6.0]
       t.integer :reason_id
       t.text :explanation
       t.text :man_explanation
-      t.boolean :approve_or_deny
+      t.string :approve_or_deny, default: ""
 
       t.timestamps
     end
