@@ -27,7 +27,7 @@
 
 ## User Stories
 
-# MVP
+### MVP
 
 * Employee can log in
 * Employee can make requests
@@ -40,25 +40,10 @@
 
 * Reasons will be specific w/ Employees being able to expand upon
 
-# Stretch Goals
+### Stretch Goals
 
 * Implement Data Visualization for EmployeeProfile
 * Implement Schedule API
 
 
 _________________________
-
-## Deliverables - 8/17
-
-# Ted 
-
-- [ ] Start Implementing Model Methods
-- [ ] Login w/ Validations
-- [ ] Error Messages
-
-
-# Wilmar
-
-- [x] Start Implementing Model Methods
-- [ ] Login w/ Validations
-- [ ] Error Messages
