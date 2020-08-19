@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_employee, :current_manager
 
     def current_employee
-      if !session[:user_id].nil? && !session[:user_id] != ""
+      if !session[:user].nil? && !session[:user] != ""
         @employee = Employee.find_by(username: session[:user])
       else
         nil
@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     end
 
     def current_manager
-      if !session[:user_id].nil? && !session[:user_id] != ""
+      if !session[:user].nil? && !session[:user] != ""
         @manager = Manager.find_by(username: session[:user])
       else
         nil
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
   
     def manager_logged_in?
-        !!current_manager
+      !!current_manager
     end
 
     def employee_logged_in?
