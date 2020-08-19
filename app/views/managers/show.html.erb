@@ -11,20 +11,32 @@
 
 <ul>
 <% @manager.requests.each do |req| %>
-<p>Reason: <%= req.reason.reason %></p>
-<p>Explanation: <%= req.explanation %></p>
 
-<%= form_with model:req do |f| %>
-<p><%= f.label "Summary" %></p>
-<p><%= f.text_area :man_explanation %></p>
+    <p>Reason: <%= req.reason.reason %></p>
+    <p>Explanation: <%= req.explanation %></p>
+    <p>summary: <%= req.man_explanation %></p>
+    <p>approval: <%= req.approve_or_deny %></p>
+
 
 <p><%= f.label "Decision" %></p>
 <p><%= f.text_field :approve_or_deny %></p>
 
-<%= f.submit %>
+     <%if req.approve_or_deny == "" %>
+            <%= form_with model:req do |f| %>
+                <p><%= f.label "Summary" %></p>
+                <p><%= f.text_area :man_explanation %></p>
 
+
+
+                <%= f.select :approve_or_deny, ["Approved", "Denied"] %><br>
+               
+
+                <%= f.submit %>
+                <hr>
+            <% end %>
+        <% end %>
+        <hr>
     <% end %>
-<% end %>
 </ul>
 <hr>
 <h2>Manager Tools</h2><br>
@@ -35,3 +47,5 @@
 
 
 <%= button_to "Logout", logout_path %>
+
+

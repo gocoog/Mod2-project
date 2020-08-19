@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
-    before_action :find_request, only: [:edit, :update]
+    # validates :approve_or_deny, inclusion: { in: %w(Approved Denied),
+    # message: "%{value} is not a valid input" }
     
     
     def new 
@@ -10,31 +11,39 @@ class RequestsController < ApplicationController
     end
 
     def create
-        @request = Request.new(request_params)
-        
-        @request.employee_id = current_employee.id
+        if employee_authorized
+            @request = Request.new(request_params)
+            
+            @request.employee_id = current_employee.id
 
-        if @request.valid?
-            @request.save
-            flash[:success] = "Request was created!"
-            redirect_to employee_path(Employee.find(@request.employee_id))
-        else 
-            pluralize(@request.errors.count, "error")
-            puts "prohibited this request from being saved:"
+            if @request.valid?
+                @request.save
+                flash[:success] = "Request was created!"
+                redirect_to employee_path(Employee.find(@request.employee_id))
+            else 
+                pluralize(@request.errors.count, "error")
+                puts "prohibited this request from being saved:"
 
-            flash[:errors] = @request.errors.full_messages
-            redirect_to new_request_path
+                flash[:errors] = @request.errors.full_messages
+                redirect_to new_request_path
+            end
         end
     end
 
-    # def edit
-    # end
+    def edit
+        if manager_authorized
+            @request = Request.find(params[:id])
+            @managers = Manager.all
+        end
+    end
 
     def update
-        @request.update(manager_params)
+        if manager_authorized
+            @request = Request.find(params[:id])
+            @request.update(manager_params)
 
-
-        redirect_to Manager_path(manager_params)
+            redirect_to manager_path
+        end
     end
 
     private
@@ -44,12 +53,8 @@ class RequestsController < ApplicationController
     end
 
 
-    # def manager_params
-    #     params.require(:request).permit(:man_explanation, :approve_or_deny)
-    # end
-    
-    def find_request
-        @request = Request.find_by(id: params[:id])
+    def manager_params
+        params.require(:request).permit(:man_explanation, :approve_or_deny)
     end
 
 end
