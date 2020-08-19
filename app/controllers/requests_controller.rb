@@ -11,6 +11,7 @@ class RequestsController < ApplicationController
 
     def create
         @request = Request.new(request_params)
+        
         @request.employee_id = current_employee.id
 
         if @request.valid?

@@ -7,6 +7,24 @@
 <p><strong>Years Working:</strong> <%= @employee.years_working %></p><br>
 <p><strong>Days Taken Off:</strong> <%= @employee.num_of_days_taken_off %></p><br></div>
 
-<%= button_to "New request", new_request_path %>
 
+
+<% if @employee.requests %>
+    <% @employee.requests.each_with_index do |request, index| %>
+     
+        <% new_i = index + 1 %>
+        Request: <%= new_i %> <br>
+        Manager: <%= request.manager.manager_name %><br>
+        Reason: <%= request.reason.reason %><br>
+        Details: <%= request.explanation %><br>
+        <% if request.approve_or_deny != "" %>
+            <%= request.approve_or_deny %>
+            <%= request.man_explanation %>
+        <%end%>
+        <br>
+    <% end %>
+ <% end %>
+
+<%= button_to "New request", new_request_path %>
 <%= button_to "Logout", logout_path %>
+

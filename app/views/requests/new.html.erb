@@ -5,5 +5,7 @@
     Reason: <%= f.collection_select :reason_id, Reason.all, :id, :reason %><br>
 
     <%=f.label "Details:" %><br>
-    <%= f.text_area :explanation %>
+    <%= f.text_area :explanation %><br>
+
+    <%= f.submit %>
 <% end %>
