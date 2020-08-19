@@ -16,8 +16,8 @@ class EmployeesController < ApplicationController
             flash[:success] = "Employee was successfully created!"
             redirect_to login_path
         else
-        
-            render :new
+            flash[:errors] = @employee.errors.full_messages
+            redirect_to new_employee_path
         end
     end
 

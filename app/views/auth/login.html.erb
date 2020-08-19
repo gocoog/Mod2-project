@@ -6,6 +6,12 @@
     </h4>
 <% end %>
 
+<% if flash[:success] %>
+    <h4 style="color: green;">
+      <%= flash[:success] %> Please Login!
+    </h4>
+<% end %>
+
 <%= form_with url: '/login', method: :post do |f| %>
 
   <%= f.label :username %>

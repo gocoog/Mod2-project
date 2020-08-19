@@ -1,5 +1,20 @@
 <h1>Manager Setup</h1>
 
+<% if flash[:errors] %>
+<div id="error_explanation">
+    <h2 style="color: red;">
+    <%= pluralize(flash[:errors].count, "error") %>
+    prohibited this Manager from being created:
+    </h2>
+
+    <ul>
+    <% flash[:errors].each do |msg| %>
+    <li style="color: red;"><%= msg %></li>
+    <% end %>
+    </ul>
+</div>
+<% end %>
+
 <div><%= form_with model:@manager do |f| %>
 
     <%= f.label :first_name %><br>

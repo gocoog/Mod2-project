@@ -1,0 +1,24 @@
+<h1> Create New Reason </h1>
+
+<%= form_with model: @reason do |f| %>
+
+<% if flash[:errors] %>
+<div id="error_explanation">
+    <h2 style="color: red;">
+    <%= pluralize(flash[:errors].count, "error") %>
+    prohibited this Reason from being created:
+    </h2>
+
+    <ul>
+    <% flash[:errors].each do |msg| %>
+    <li style="color: red;"><%= msg %></li>
+    <% end %>
+    </ul>
+</div>
+<% end %>
+
+    <%= f.label :reason %>
+    <%= f.text_field :reason %>
+
+    <%= f.submit %>
+<% end %>

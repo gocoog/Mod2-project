@@ -11,10 +11,15 @@ class ManagersController < ApplicationController
     end 
 
     def create
-        @manager = Manager.create(manager_params)
-        
-        flash[:success] = "Manager was successfully created!"
-        redirect_to manager_path(@manager)
+        @manager = Manager.new(manager_params)
+        if @manager.valid?
+            @manager.save
+            flash[:success] = "Manager was successfully created!"
+            redirect_to login_path
+        else
+            flash[:errors] = @manager.errors.full_messages
+            redirect_to new_manager_path
+        end
     end
 
     def edit
