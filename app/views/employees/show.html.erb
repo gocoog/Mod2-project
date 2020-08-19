@@ -18,8 +18,8 @@
         Reason: <%= request.reason.reason %><br>
         Details: <%= request.explanation %><br>
         <% if request.approve_or_deny != "" %>
-            <%= request.approve_or_deny %>
-            <%= request.man_explanation %>
+            approved: <%= request.approve_or_deny %><br>
+            explanation: <%= request.man_explanation %><br>
         <%end%>
         <br>
     <% end %>

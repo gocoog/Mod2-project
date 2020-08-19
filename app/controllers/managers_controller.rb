@@ -1,8 +1,9 @@
 class ManagersController < ApplicationController
-    before_action :find_manager, only: [:show, :edit, :update]
+    before_action :find_manager, only: [:edit, :update]
     before_action :manager_authorized
 
     def show
+        @manager = Manager.find_by(id: current_manager.id)
     end
 
     def new
