@@ -19,7 +19,7 @@ reason4 = Reason.create(reason: "Family emergency")
 5.times do 
     employee = Employee.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, years_working: rand(1..20), username: Faker::Internet.username(specifier: 8), email: Faker::Internet.free_email, password: "pass")
 
-    manager = Manager.create(username: Faker::Internet.username(specifier: 8), passcode: 123, password: "admin")
+    manager = Manager.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.free_email, username: Faker::Internet.username(specifier: 8), passcode: 123, password: "admin")
     
     request = Request.create(employee_id: Employee.all[rand(Employee.all.length)].id, manager_id: Manager.all[rand(Manager.all.length)].id, reason_id: Reason.all[rand(Reason.all.length)].id, explanation: Faker::Lorem.sentence(word_count: 3))
 end
