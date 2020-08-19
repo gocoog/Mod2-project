@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
 
     def employee_logged_in?
-      !!current_employee
+        !!current_employee
     end
   
     def manager_authorized

@@ -8,11 +8,22 @@
 <br>
 <h3>Employee Requests</h3>
 
+
 <ul>
 <% @manager.requests.each do |req| %>
+<p>Reason: <%= req.reason.reason %></p>
+<p>Explanation: <%= req.explanation %></p>
 
-<li><%= req %></li>
+<%= form_with model:req do |f| %>
+<p><%= f.label "Summary" %></p>
+<p><%= f.text_area :man_explanation %></p>
 
+<p><%= f.label :approve_or_deny %></p>
+<p><%= f.text_field :approve_or_deny %></p>
+
+<%= f.submit %>
+
+    <% end %>
 <% end %>
 </ul>
 
