@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
     before_action :find_employee, only: [:show, :edit, :update]
     before_action :employee_authorized, only: [:show]
-
+    
     def show
     end
 
@@ -10,11 +10,15 @@ class EmployeesController < ApplicationController
     end
     
     def create
-        @employee = Employee.create(employee_params)
-
-        flash[:success] = "Employee was successfully created!"
-
-        redirect_to login_path
+        @employee = Employee.new(employee_params)
+        if @employee.valid?
+            @employee.save
+            flash[:success] = "Employee was successfully created!"
+            redirect_to login_path
+        else
+        
+            render :new
+        end
     end
 
     def edit

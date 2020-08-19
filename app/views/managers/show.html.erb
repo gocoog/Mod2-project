@@ -17,20 +17,13 @@
     <p>summary: <%= req.man_explanation %></p>
     <p>approval: <%= req.approve_or_deny %></p>
 
-
-<p><%= f.label "Decision" %></p>
-<p><%= f.text_field :approve_or_deny %></p>
-
      <%if req.approve_or_deny == "" %>
             <%= form_with model:req do |f| %>
                 <p><%= f.label "Summary" %></p>
                 <p><%= f.text_area :man_explanation %></p>
 
-
-
                 <%= f.select :approve_or_deny, ["Approved", "Denied"] %><br>
                
-
                 <%= f.submit %>
                 <hr>
             <% end %>
