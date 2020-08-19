@@ -18,7 +18,7 @@
 <p><%= f.label "Summary" %></p>
 <p><%= f.text_area :man_explanation %></p>
 
-<p><%= f.label :approve_or_deny %></p>
+<p><%= f.label "Decision" %></p>
 <p><%= f.text_field :approve_or_deny %></p>
 
 <%= f.submit %>
@@ -26,5 +26,12 @@
     <% end %>
 <% end %>
 </ul>
+<hr>
+<h2>Manager Tools</h2><br>
+
+<%= button_to "Create New Manager", new_manager_path, :method => :get %><br>
+
+<%= button_to "Create New Employee", new_employee_path, :method => :get %><br>
+
 
 <%= button_to "Logout", logout_path %>

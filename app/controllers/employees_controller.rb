@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
     before_action :find_employee, only: [:show, :edit, :update]
-    before_action :employee_authorized
+    before_action :employee_authorized, only: [:show]
 
     def show
     end
@@ -14,7 +14,7 @@ class EmployeesController < ApplicationController
 
         flash[:success] = "Employee was successfully created!"
 
-        redirect_to employee_path(@employee)
+        redirect_to login_path
     end
 
     def edit
