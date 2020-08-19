@@ -1,7 +1,4 @@
 class RequestsController < ApplicationController
-    # validates :approve_or_deny, inclusion: { in: %w(Approved Denied),
-    # message: "%{value} is not a valid input" }
-    
     
     def new 
         if employee_authorized

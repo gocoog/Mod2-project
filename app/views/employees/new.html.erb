@@ -1,5 +1,11 @@
 <h1>Employee Setup</h1>
 
+<% if flash[:errors] %>
+  <% flash[:errors].each do |key| %>
+    <h4 style="color: red;"> Error(s): <%= key %> </h4>
+  <% end %>
+<% end %>
+
 <div><%= form_with model:@employee do |f| %>
 
     <%= f.label :first_name %><br>
