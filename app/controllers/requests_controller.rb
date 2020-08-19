@@ -29,12 +29,12 @@ class RequestsController < ApplicationController
     # def edit
     # end
 
-    # def update
-    #     @request.update(manager_params)
+    def update
+        @request.update(manager_params)
 
 
-    #     redirect_to employee_path(Employee.find(@request.employee_id))
-    # end
+        redirect_to Manager_path(manager_params)
+    end
 
     private
 
