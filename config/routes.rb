@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :managers
   resources :employees
 
+  get '/home', to: 'home#welcome'
+
   post '/requests/new', to: 'requests#new'
 
   get '/login', to: 'auth#login'
