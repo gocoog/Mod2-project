@@ -1,1 +1,19 @@
-<h1>Manager show</h1>
+
+<h1><%= @manager.first_name %>'s Profile</h1><br>
+<hr>
+
+<div><h2><em><%= @manager.manager_name %></em></h2><br>
+<p><strong>Username:</strong> <%= @manager.username %></p><br>
+<p><strong>Email:</strong> <%= @manager.email %></p></div>
+<br>
+<h3>Employee Requests</h3>
+
+<ul>
+<% @manager.requests.each do |req| %>
+
+<li><%= req %></li>
+
+<% end %>
+</ul>
+
+<%= button_to "Logout", logout_path %>

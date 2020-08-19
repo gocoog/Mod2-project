@@ -5,7 +5,7 @@ class Manager < ApplicationRecord
     has_many :employees, through: :requests
 
     def manager_name
-        self.manager.first_name + " " + self.manager.last_name
+        self.first_name + " " + self.last_name
     end
 
 end

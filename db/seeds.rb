@@ -12,19 +12,22 @@ Manager.destroy_all
 Request.destroy_all
 
 reason = Reason.create(reason: "Vacation Time")
-reason = Reason.create(reason: "Sick Leave")
-reason = Reason.create(reason: "Overtime")
-reason = Reason.create(reason: "Family emergency")
-
+reason2 = Reason.create(reason: "Sick Leave")
+reason3 = Reason.create(reason: "Overtime")
+reason4 = Reason.create(reason: "Family emergency")
 
 5.times do 
     employee = Employee.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, years_working: rand(1..20), username: Faker::Internet.username(specifier: 8), email: Faker::Internet.free_email, password: "pass")
 
     manager = Manager.create(username: Faker::Internet.username(specifier: 8), passcode: 123, password: "admin")
     
-    request = Request.create(employee_id: employee.id, manager_id: manager.id, reason_id: rand(1..4), explanation: Faker::Lorem.sentence(word_count: 3))
+    request = Request.create(employee_id: Employee.all[rand(Employee.all.length)].id, manager_id: Manager.all[rand(Manager.all.length)].id, reason_id: Reason.all[rand(Reason.all.length)].id, explanation: Faker::Lorem.sentence(word_count: 3))
 end
 
 will = Employee.create(first_name: "will", years_working: 3, last_name: "reyes",username: "will", email: "will@gmail.com", password: "password")
 
-ted = Manager.create(username: "ted", passcode: 123, password: "admin")
+ted = Manager.create(first_name: "ted", last_name: "neben", email: "ted@gmail.com", username: "ted", passcode: 123, password: "admin")
+
+request10 = Request.create(employee_id: 2, manager_id: 6, reason_id: 3, explanation: "lajdlkfj;alksjdf")
+
+

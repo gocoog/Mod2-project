@@ -1,12 +1,18 @@
 class RequestsController < ApplicationController
     before_action :find_request, only: [:edit, :update]
-    before_action :authorized
+    
+    
     def new 
-        @request = Request.new
+        if employee_authorized
+            @request = Request.new
+            @employees = Employee.all
+        end
     end
 
     def create
         @request = Request.new(request_params)
+        @request.employee_id = current_employee.id
+
         if @request.valid?
             @request.save
             flash[:success] = "Request was created!"
@@ -20,15 +26,15 @@ class RequestsController < ApplicationController
         end
     end
 
-    def edit
-    end
+    # def edit
+    # end
 
-    def update
-        @request.update(manager_params)
+    # def update
+    #     @request.update(manager_params)
 
 
-        redirect_to employee_path(Employee.find(@request.employee_id))
-    end
+    #     redirect_to employee_path(Employee.find(@request.employee_id))
+    # end
 
     private
 
@@ -37,9 +43,9 @@ class RequestsController < ApplicationController
     end
 
 
-    def manager_params
-        params.require(:request).permit(:man_explanation, :approve_or_deny)
-    end
+    # def manager_params
+    #     params.require(:request).permit(:man_explanation, :approve_or_deny)
+    # end
     
     def find_request
         @request = Request.find_by(id: params[:id])
