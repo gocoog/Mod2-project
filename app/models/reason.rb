@@ -1,3 +1,3 @@
 class Reason < ApplicationRecord
-    belongs_to :request
+    has_many :requests
 end

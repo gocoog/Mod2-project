@@ -1,6 +1,6 @@
 class ManagersController < ApplicationController
     before_action :find_manager, only: [:show, :edit, :update]
-    before_action :authorized
+    before_action :manager_authorized
 
     def show
     end

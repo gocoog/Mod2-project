@@ -1,13 +1,13 @@
 class ReasonsController < ApplicationController
 
-    before_action :authorized
     
     def new
         @reason = Reason.new
     end 
 
     def create
-        @reason = Reason.new(reason_params)
+        @reason = Reason.create(reason_params)
+        byebug
     end
 
     private

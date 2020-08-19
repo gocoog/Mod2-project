@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
     before_action :find_employee, only: [:show, :edit, :update]
-    before_action :authorized
-    
+    before_action :employee_authorized
+
     def show
     end
 
@@ -21,9 +21,11 @@ class EmployeesController < ApplicationController
     end 
 
     def update
-        @employee.update(employee_params)
-        flash[:success] = 'Employee Profile has successfully been updated!'
-        redirect_to employee_path(@employee)
+        if employee_authorized
+            @employee.update(employee_params)
+            flash[:success] = 'Employee Profile has successfully been updated!'
+            redirect_to employee_path(@employee)
+        end
     end
 
     private

@@ -17,22 +17,25 @@ class ApplicationController < ActionController::Base
       end
     end
   
-    def logged_in?
-      # if current_author.nil?
-      #   false
-      # else
-      #   true
-      # end
-      
-      if current_manager
+    def manager_logged_in?
         !!current_manager
-      else
-        !!current_employee
-      end
+    end
+
+    def employee_logged_in?
+      !!current_employee
     end
   
-    def authorized
-      if logged_in?
+    def manager_authorized
+      if manager_logged_in?
+        true
+      else
+        flash[:error] = "You must login to see this page."
+        redirect_to login_path
+      end
+    end
+
+    def employee_authorized
+      if employee_logged_in?
         true
       else
         flash[:error] = "You must login to see this page."
