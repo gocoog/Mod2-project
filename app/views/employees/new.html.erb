@@ -15,28 +15,30 @@
 </div>
 <% end %>
 
-<div><%= form_with model:@employee do |f| %>
+<div class="container text-center">
+    <div><%= form_with model:@employee do |f| %>
 
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %><br>
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name %><br>
 
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %><br>
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name %><br>
 
-    <%= f.label :years_working %><br>
-    <%= f.text_field :years_working %><br>
+        <%= f.label :years_working %><br>
+        <%= f.text_field :years_working %><br>
 
-    <%= f.label :email %><br>
-    <%= f.text_field :email %><br>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %><br>
 
-    <%= f.label :username %><br>
-    <%= f.text_field :username %><br>
+        <%= f.label :username %><br>
+        <%= f.text_field :username %><br>
 
-    <%= f.label :password %><br>
-    <%= f.text_field :password %><br>
-<br>
-    <%= f.submit %></div>
+        <%= f.label :password %><br>
+        <%= f.text_field :password %><br>
+    <br>
+        <%= f.submit %></div>
 
-<% end %>
+    <% end %>
+<div>
 
 
