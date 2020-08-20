@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-<h1>This is Login page</h1>
+  <style>
+  body {
+     background-image: url("assets/employee_login.jpg");
+     background-repeat: no-repeat;
+     background-size: 100%;
+  } 
+</style>
+<h1><img src="assets/Login" alt="login" style="max-width:15%;"></h1>
 </head>
 
   <body>
@@ -19,18 +25,24 @@
         </h4>
     <% end %>
 
-    <%= form_with url: '/login', method: :post do |f| %>
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">Please login</h5>
 
-        <%= f.label :username %>
-        <%= f.text_field :"login[username]" %>
+            <%= form_with url: '/login', method: :post do |f| %>
 
-        <%= f.label :password %>
-        <%= f.text_field :"login[password]" %>
+                <%= f.label :username %>
+                <%= f.text_field :"login[username]" %>
 
-        <%= f.label :passcode %>
-        <%= f.text_field :"login[passcode]" %>
+                <%= f.label :password %>
+                <%= f.text_field :"login[password]" %>
 
-        <%= f.submit "Login" %>
-      <% end %>
+                <%= f.label :passcode %>
+                <%= f.text_field :"login[passcode]" %>
+
+                <%= f.submit "Login" %>
+              <% end %>
+            </div>
+          </div>
     </body>
   </html>
