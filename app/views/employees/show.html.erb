@@ -1,6 +1,11 @@
-<h1><%= @employee.first_name %>'s Profile</h1><br>
-<hr>
+<!DOCTYPE html>
+<html>
+<head>
 
+<h3><%= @employee.first_name.titleize %>'s Profile </h3> <br>
+<hr>
+</head>
+<body>
 <div><h2><em><%= @employee.employee_name %></em></h2><br>
 <p><strong>Username:</strong> <%= @employee.username %></p><br>
 <p><strong>Email:</strong> <%= @employee.email %></p><br>
@@ -11,20 +16,29 @@
 
 <% if @employee.requests %>
     <% @employee.requests.each_with_index do |request, index| %>
-     
-        <% new_i = index + 1 %>
-        Request: <%= new_i %> <br>
-        Manager: <%= request.manager.manager_name %><br>
-        Reason: <%= request.reason.reason %><br>
-        Details: <%= request.explanation %><br>
-        <% if request.approve_or_deny != "" %>
-            approved: <%= request.approve_or_deny %><br>
-            explanation: <%= request.man_explanation %><br>
-        <%end%>
-        <br>
+        <div class="d-flex justify-content-center">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+         <div class="card-body">
+            <% new_i = index + 1 %>
+            <h5 class="card-title">Request: <%= new_i %> </h5>
+                <br>
+                Manager: <%= request.manager.manager_name %><br>
+                Reason: <%= request.reason.reason %><br>
+                Details: <%= request.explanation %><br>
+                <% if request.approve_or_deny != "" %>
+                    approved: <%= request.approve_or_deny %><br>
+                    explanation: <%= request.man_explanation %><br>
+                <%end%>
+                <br>
+            </div>
+        </div>
+        </div>
     <% end %>
  <% end %>
-
-<%= button_to "New request", new_request_path %>
-<%= button_to "Logout", logout_path %>
-
+<div class="text-center">
+<%= button_to "New request", new_request_path, {:class => "btn btn-primary btn-lg" } %>
+</div>
+<br>
+<br><br>
+</body>
+</html>
