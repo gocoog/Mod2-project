@@ -1,6 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
 
 <h1><%= @manager.first_name %>'s Profile</h1><br>
+</head>
 <hr>
+<body>
 
 <div><h2><em><%= @manager.manager_name %></em></h2><br>
 <p><strong>Username:</strong> <%= @manager.username %></p><br>
@@ -8,9 +13,34 @@
 <br>
 <h3>Employee Requests</h3>
 
+<% if params[:sort] == "true" %>
+    <%= link_to "Sort by request date ⬇", "#{manager_path}?sort=false" %>
 
-<ul>
-<% @manager.requests.each do |req| %>
+    <% @manager.requests.sort_by{|request| request.updated_at}.each do |req| %>
+
+        <p>Reason: <%= req.reason.reason %></p>
+        <p>Explanation: <%= req.explanation %></p>
+        <p>summary: <%= req.man_explanation %></p>
+        <p>approval: <%= req.approve_or_deny %></p>
+
+        <%if req.approve_or_deny == "" %>
+                <%= form_with model:req do |f| %>
+                    <p><%= f.label "Summary" %></p>
+                    <p><%= f.text_area :man_explanation %></p>
+
+                    <%= f.select :approve_or_deny, ["Approved", "Denied"] %><br>
+                
+                    <%= f.submit %>
+                    <hr>
+                <% end %>
+            <% end %>
+            <hr>
+        <% end %>
+    </ul>
+<% else %>
+<%= link_to "Sort by request date ⬆", "#{manager_path}?sort=true" %>
+
+<% @manager.requests.sort_by{|request| request.updated_at}.reverse.each do |req| %>
 
     <p>Reason: <%= req.reason.reason %></p>
     <p>Explanation: <%= req.explanation %></p>
@@ -31,6 +61,9 @@
         <hr>
     <% end %>
 </ul>
+<% end %>
+
+
 <hr>
 <h2>Manager Tools</h2><br>
 
@@ -42,4 +75,5 @@
 
 <%= button_to "Logout", logout_path %>
 
-
+</body>
+</html>
