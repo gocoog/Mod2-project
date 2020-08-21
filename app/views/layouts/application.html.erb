@@ -7,22 +7,21 @@
   <a class="navbar-brand" href="/home"><img src="/assets/MPloy.png" alt="MPloy" style="max-width:15%;"></a>
 
 <% if session[:user]%>
-<div class='login_out'>
-      <a class="btn btn-danger" href="/logout" role="button">
+      <a class="btn btn-outline-danger" href="/logout" role="button">
       Logout
       </a>
     <% else %>
-      <a class="btn btn-primary" href="/login" role="button">
+      <a class="btn btn-outline-primary" href="/login" role="button">
       Login
       </a>
+
     </div>
     <div class="sign_up">
         <a class="btn btn-primary" href="/employees/new" role="button">
         Employee Sign Up!
         </a>
-        </div>
+      </div>
     <% end %>
-
   
 </nav>
 
