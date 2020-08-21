@@ -35,12 +35,13 @@
                 <%= f.text_field :"login[username]" %>
 
                 <%= f.label :password %>
-                <%= f.text_field :"login[password]" %>
+                <%= f.password_field :"login[password]" %>
 
                 <%= f.label :passcode %>
-                <%= f.text_field :"login[passcode]" %>
-
-                <%= f.submit "Login" %>
+                <%= f.password_field :"login[passcode]" %><br>
+              <br>
+                <%= f.submit "Login", {:class => "btn btn-primary btn-lg" }  %>
+             
               <% end %>
             </div>
           </div>

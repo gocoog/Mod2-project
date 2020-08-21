@@ -49,9 +49,9 @@
             <%= f.text_field :username %><br>
 
             <%= f.label :password %><br>
-            <%= f.text_field :password %><br>
+            <%= f.password_field :password %><br>
         <br>
-            <%= f.submit %>
+            <%= f.submit "Create Employee", {:class => "btn btn-primary btn-lg" }   %>
 
         <% end %>
     </div>
