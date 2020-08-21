@@ -15,7 +15,7 @@ class ManagersController < ApplicationController
         if @manager.valid?
             @manager.save
             flash[:success] = "Manager was successfully created!"
-            redirect_to login_path
+            redirect_to manager_path(current_manager)
         else
             flash[:errors] = @manager.errors.full_messages
             redirect_to new_manager_path

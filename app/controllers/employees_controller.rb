@@ -13,8 +13,12 @@ class EmployeesController < ApplicationController
         @employee = Employee.new(employee_params)
         if @employee.valid?
             @employee.save
-            flash[:success] = "Employee was successfully created!"
-            redirect_to login_path
+            if current_manager
+                redirect_to manager_path(current_manager)
+            else
+                flash[:success] = "Employee was successfully created!"
+                redirect_to login_path
+            end
         else
             flash[:errors] = @employee.errors.full_messages
             redirect_to new_employee_path
