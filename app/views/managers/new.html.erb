@@ -1,5 +1,12 @@
-<h1>Manager Setup</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+ <body>
 
+<h1>Manager Setup</h1>
+<div class="text-center">
+<div class="errors">
 <% if flash[:errors] %>
 <div id="error_explanation">
     <h2 style="color: red;">
@@ -7,13 +14,20 @@
     prohibited this Manager from being created:
     </h2>
 
-    <ul>
+
     <% flash[:errors].each do |msg| %>
-    <li style="color: red;"><%= msg %></li>
+        <ul style="color: red;"><%= msg %>
+        </ul>
     <% end %>
-    </ul>
 </div>
 <% end %>
+</div>
+
+
+<div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Create Manager</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Fill in form below</h6>
 
 <div><%= form_with model:@manager do |f| %>
 
@@ -30,11 +44,17 @@
     <%= f.text_field :username %><br>
 
     <%= f.label :password %><br>
-    <%= f.text_field :password %><br>
+    <%= f.password_field :password %><br>
 
     <%= f.label :passcode %><br>
-    <%= f.text_field :passcode %><br>
+    <%= f.password_field :passcode %><br>
 <br>
-    <%= f.submit %></div>
-
+    <%= f.submit "Create Manager", {:class => "btn btn-primary btn-lg" }   %></div>
+</div>
 <% end %>
+    </div>
+    </div>
+
+<br><br>
+</body>
+</html>

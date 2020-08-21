@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
 
             if @request.valid?
                 @request.save
-                flash[:success] = "Request was created!"
+               
                 redirect_to employee_path(Employee.find(@request.employee_id))
             else 
                 pluralize(@request.errors.count, "error")

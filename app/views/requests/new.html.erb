@@ -1,5 +1,15 @@
-<h1>new request</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+ <body>
 
+<h1>New Request</h1>
+
+<div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+    <div class="card-body">
+       
+        <h6 class="card-subtitle mb-2 text-muted">Fill in form below</h6>
 <%= form_with model: @request do |f|%>
   Manager: <%= f.collection_select :manager_id, Manager.all, :id, :first_name %><br>
     Reason: <%= f.collection_select :reason_id, Reason.all, :id, :reason %><br>
@@ -7,5 +17,12 @@
     <%=f.label "Details:" %><br>
     <%= f.text_area :explanation %><br>
 
-    <%= f.submit %>
+    <%= f.submit "Create Request", {:class => "btn btn-primary btn-sm" }     %>
 <% end %>
+
+</div>
+</div>
+
+<br><br>
+</body>
+</html>

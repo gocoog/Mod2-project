@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
+<style>
+  body {
+     background-image: url("/assets/Be_Someone.jpg");
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+     background-position: center center;
+  } 
+</style>
 
-<h1><%= @manager.first_name %>'s Profile</h1><br>
+<h1 id="manager"><%= @manager.manager_name.titleize %>'s Profile</h1><br>
 </head>
 <hr>
 <body>
 
-<div><h2><em><%= @manager.manager_name %></em></h2><br>
-<p><strong>Username:</strong> <%= @manager.username %></p><br>
-<p><strong>Email:</strong> <%= @manager.email %></p></div>
-<br>
-<h3>Employee Requests</h3>
+<div class="text-right">
+<h4><strong>Username:</strong> <%= @manager.username %></h4><br>
+<h4><strong>Email:</strong> <%= @manager.email %></h4>
+</div>
+
+<div class="text-center">
+<h2>Employee Requests</h2>
+
 
 <% if params[:sort] == "true" %>
+<div class="sort">
     <%= link_to "Sort by request date ⬇", "#{manager_path}?sort=false" %>
-
+</div>
     <% @manager.requests.sort_by{|request| request.updated_at}.each do |req| %>
-
+        <div class="d-flex justify-content-center">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+         <div class="card-body">
+         <h4 class="card-title">Request</h4>
         <p>Reason: <%= req.reason.reason %></p>
         <p>Explanation: <%= req.explanation %></p>
         <p>summary: <%= req.man_explanation %></p>
@@ -34,14 +50,21 @@
                     <hr>
                 <% end %>
             <% end %>
-            <hr>
+          
+            </div>
+        </div>
+        </div>
         <% end %>
     </ul>
 <% else %>
+<div class="sort">
 <%= link_to "Sort by request date ⬆", "#{manager_path}?sort=true" %>
-
+</div>
 <% @manager.requests.sort_by{|request| request.updated_at}.reverse.each do |req| %>
-
+    <div class="d-flex justify-content-center">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+         <div class="card-body">
+         <h4 class="card-title">Request</h4>
     <p>Reason: <%= req.reason.reason %></p>
     <p>Explanation: <%= req.explanation %></p>
     <p>summary: <%= req.man_explanation %></p>
@@ -58,22 +81,25 @@
                 <hr>
             <% end %>
         <% end %>
-        <hr>
+        </div>
+        </div>
+        </div>
     <% end %>
 </ul>
 <% end %>
 
 
-<hr>
 <h2>Manager Tools</h2><br>
+<span class="buttonalign">
+<%= button_to "Create New Manager", new_manager_path, :class => "btn btn-primary btn-lg", :method => :get %><br>
+</span>
+<%= button_to "Create New Employee", new_employee_path, :class => "btn btn-primary btn-lg", :method => :get %><br>
 
-<%= button_to "Create New Manager", new_manager_path, :method => :get %><br>
+<%= button_to "Create New Reason", new_reason_path, :class => "btn btn-primary btn-lg", :method => :get %><br>
 
-<%= button_to "Create New Employee", new_employee_path, :method => :get %><br>
+<%= button_to "Logout", logout_path, :class => "btn btn-primary btn-lg" %>
 
-<%= button_to "Create New Reason", new_reason_path, :method => :get %><br>
-
-<%= button_to "Logout", logout_path %>
-
+<br><br>
+</div>
 </body>
 </html>

@@ -1,5 +1,11 @@
-<h1> Create New Reason </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+ <body>
 
+<h1> Create New Reason </h1>
+<div class="text-center">
 <%= form_with model: @reason do |f| %>
 
 <% if flash[:errors] %>
@@ -9,16 +15,26 @@
     prohibited this Reason from being created:
     </h2>
 
-    <ul>
+    
     <% flash[:errors].each do |msg| %>
-    <li style="color: red;"><%= msg %></li>
+    <ul style="color: red;"><%= msg %> </ul>
     <% end %>
-    </ul>
+   
 </div>
-<% end %>
+    <% end %>
 
-    <%= f.label :reason %>
-    <%= f.text_field :reason %>
-
-    <%= f.submit %>
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+    <div class="card-body">
+       
+        <h6 class="card-subtitle mb-2 text-muted">Fill in form below</h6>
+            <%= f.label :reason %>
+            <%= f.text_field :reason %><br>
+            <br>
+            <%= f.submit "Create Reason", {:class => "btn btn-primary btn-sm" }    %>
+            </div>
+            </div>
 <% end %>
+</div>
+<br><br>
+</body>
+</html>
