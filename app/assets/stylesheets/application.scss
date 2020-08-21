@@ -96,6 +96,7 @@ h3 {
 
   div.ex1 {
     padding-left: 100px;
+    color: white;
   }
 
   div.text-right {
@@ -107,4 +108,16 @@ h3 {
       font-family: "Harlow";
       font-size: 200%;
       -webkit-text-stroke: 1px black;
+  }
+
+  a.navbar-brand {
+      padding-left: 30px;
+  }
+
+  div.login_out {
+      padding-right: 50px;
+  }
+
+  div.sign_up {
+      padding-left: 30px;
   }
