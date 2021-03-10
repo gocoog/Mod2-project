@@ -28,6 +28,6 @@ will = Employee.create(first_name: "will", years_working: 3, last_name: "reyes",
 
 ted = Manager.create(first_name: "ted", last_name: "neben", email: "ted@gmail.com", username: "ted", passcode: 123, password: "admin")
 
-request10 = Request.create(employee_id: 2, manager_id: 6, reason_id: 3, explanation: "lajdlkfj;alksjdf")
+request10 = Request.create(employee_id: 2, manager_id: 6, reason_id: 3, explanation: "New Baby in the house and need more hours.")
 
 
