@@ -2,15 +2,13 @@
 
 MPloy! is a Human Resources application that assists both employee and employer keep schedule requests and personalized work history organized and transparent. 
 
-After owning and running my own small business, I saw a need to create something that would help both sides of employment at a company feel included and in control. There are several more areas that can elevate this application to the next level and would be thrilled to have you contribute! Follow the "Contributing" section to learn how!
-
 # Demo
 
-👉 Watch it <a href="https://www.youtube.com/watch?v=cUdRhZERVq0">here!</a>
+👉 Watch it <a href="">here!</a> 
 
-<img src="app/assets/images/MPloy_Screenshot.png">
+<img src="">
 
-<img src="https://j.gifs.com/xnQxMJ.gif">
+<img src="">
 
 # Prerequisites
 
@@ -107,9 +105,9 @@ To contribute to MPloy!, follow these steps:
 
 A special thanks to those who helped get the project off the ground and continued to add to it!
 
-    @Tneebs 💻
     @gocoog 💻
+    @Tneebs 💻
 
 # Contact
 
-If you would like to contact me, you can reach me at tedneben@gmail.com
+If you would like to contact me, you can reach me at reyes.wilmar@gmail.com
