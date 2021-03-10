@@ -43,7 +43,7 @@ Before you begin, ensure you have done the following:
 
 ✅ Growth Opportunities
 
-# Models & Relationships
+# <h3>Models & Relationships</h3>
 
 - Employee has_many :requests
 - Employee has_one :manager, through: :requests
@@ -66,7 +66,7 @@ Before you begin, ensure you have done the following:
 
 # User Stories
 
-<h3>MVP<h3>
+<h3>MVP</h3>
 
 - Employee can log in
 - Employee can make requests
@@ -79,7 +79,7 @@ Before you begin, ensure you have done the following:
 
 - Reasons will be specific w/ Employees being able to expand upon
 
-<h3>Stretch Goals<h3>
+<h3>Stretch Goals</h3>
 
 - Implement Data Visualization for EmployeeProfile
 - Implement Schedule API
